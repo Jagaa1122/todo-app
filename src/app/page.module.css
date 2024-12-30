@@ -2,18 +2,20 @@
   width: 377px;
   background-color: #fff;
   border-radius: 8px;
-  margin-inline: auto;
+  margin: 0 auto;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.16);
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  flex-direction: column;
-  gap: 40px;
-  height: 290px;
+  font-family: sans-serif;
+  padding: 30px 20px;
+  
+}
+.todo-container > h1 {
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 25px;
 }
 
 .addButton {
-  width: 59px;
+  padding: 10px 15px;
   background-color: #3c82f6;
   border: none;
   cursor: pointer;
@@ -21,7 +23,53 @@
   color: #f9f9f9;
   border-radius: 6px;
 }
-.flex {
+.newTaskinput {
   display: flex;
-  gap: 20px;
+  margin-bottom: 20px;
+  gap: 5px;
 }
+.newTaskinput input {
+  flex-grow: 1;
+  padding: 10px 15px;
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+}
+
+.categories {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 25px;
+}
+.categories button {
+  padding: 7px 11px;
+  background-color: #e9e9e9;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: #717171;
+  border-radius: 6px;
+
+}
+.categories button.selected {
+  background-color: #3c82f6;
+  color: #f9f9f9;
+}
+.noTask {
+  text-align: center;
+  font-size: 16px;
+  padding: 20px 0;
+  color: #8d8d8d;
+
+}
+.copyright {
+  color: #8d8d8d;
+  font-size: 13px;
+  text-align: center;
+}
+.copyright span {
+  color: #3c82f6;
+}
+.tasks {
+  margin-bottom: 25px;
+}
+

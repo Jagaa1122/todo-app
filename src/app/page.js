@@ -18,7 +18,7 @@ export default function Home() {
     <div className="container">
       <div className={styles[`todo-container`]}>
         <h1>To-Do List</h1>
-        <div className={styles.flex}>
+        <div className={styles.newTaskinput}>
           <input
             type="text"
             placeholder="Add a new task..."
@@ -28,13 +28,17 @@ export default function Home() {
             Add
           </button>
         </div>
-        <div className={styles.flex}>
-          <button>All</button>
+        <div className={styles.categories}>
+          <button className={styles.selected}>All</button>
           <button>Active</button>
           <button>Completed</button>
           <button onClick={deleteHandler}>Delete</button>
         </div>
-        <div>{}</div>
+        <div className={styles.tasks}>
+          <p className={styles.noTask}>No tasks yet. Add one above!</p>
+          
+        </div>
+        <p className={styles.copyright}>Powered by <span>Pinecone academy</span></p>
       </div>
     </div>
   );
