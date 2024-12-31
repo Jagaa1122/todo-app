@@ -4,8 +4,9 @@ import styles from "./page.module.css";
 import { useState } from "react";
 
 export default function Home() {
-  const [todos, setTodos] = useState(["a", "b"]);
+  const [todos, setTodos] = useState([""]);
   const [newTodo, setNewTodo] = useState("");
+  const [activeFilter, setActivefilter] = useState("all");
 
   const addTodoHandler = () => {
     setTodos([...todos, newTodo]);
@@ -29,16 +30,36 @@ export default function Home() {
           </button>
         </div>
         <div className={styles.categories}>
-          <button className={styles.selected}>All</button>
-          <button>Active</button>
-          <button>Completed</button>
-          <button onClick={deleteHandler}>Delete</button>
+          <button
+            className={activeFilter == "all" && styles.selected}
+            onClick={() => setActivefilter("all")}
+          >
+            All
+          </button>
+          <button
+            className={activeFilter == "active" && styles.selected}
+            onClick={() => setActivefilter("active")}
+          >
+            Active
+          </button>
+          <button
+            className={activeFilter == "completed" && styles.selected}
+            onClick={() => setActivefilter("completed")}
+          >
+            Completed
+          </button>
+        </div>
+        <div>
+          {todos.map((todo, index) => {
+            return <p key={index}>{todo}</p>;
+          })}
         </div>
         <div className={styles.tasks}>
           <p className={styles.noTask}>No tasks yet. Add one above!</p>
-          
         </div>
-        <p className={styles.copyright}>Powered by <span>Pinecone academy</span></p>
+        <p className={styles.copyright}>
+          Powered by <span>Pinecone academy</span>
+        </p>
       </div>
     </div>
   );
