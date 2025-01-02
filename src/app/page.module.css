@@ -6,7 +6,6 @@
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.16);
   font-family: sans-serif;
   padding: 30px 20px;
-  
 }
 .todo-container > h1 {
   text-align: center;
@@ -48,7 +47,6 @@
   font-size: 14px;
   color: #717171;
   border-radius: 6px;
-
 }
 .categories button.selected {
   background-color: #3c82f6;
@@ -59,7 +57,6 @@
   font-size: 16px;
   padding: 20px 0;
   color: #8d8d8d;
-
 }
 .copyright {
   color: #8d8d8d;
@@ -72,4 +69,7 @@
 .tasks {
   margin-bottom: 25px;
 }
-
+.completed {
+  color: black;
+  text-decoration: line-through;
+}
