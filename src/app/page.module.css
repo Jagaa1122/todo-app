@@ -58,6 +58,20 @@
   padding: 20px 0;
   color: #8d8d8d;
 }
+.taskSummary {
+  font-size: 13px;
+  padding: 20px 0;
+  color: #8d8d8d;
+  display: flex;
+  justify-content: space-between;
+  
+}
+.clearCompletedBtn {
+  color: rgb(238, 66, 66);
+  cursor: pointer;
+  
+}
+
 .copyright {
   color: #8d8d8d;
   font-size: 13px;
@@ -72,4 +86,26 @@
 .completed {
   color: black;
   text-decoration: line-through;
+  
 }
+.checkBox {
+  display: flex;
+  gap: 5px;
+  padding: 10px 15px;
+  
+  border-radius: 6px;
+  background-color: #f5f5f5;
+  margin-bottom: 10px;
+  align-items: center;
+  
+}
+.deleteBtn {
+  color: rgb(238, 66, 66);
+  background-color: rgb(249, 220, 220);
+  padding: 10px 15px;
+  border-radius: 6px;
+  border: 0;
+  margin-left: auto;
+  cursor: pointer;
+}
+
