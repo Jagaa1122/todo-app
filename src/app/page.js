@@ -8,7 +8,17 @@ export default function Home() {
   const [newTodo, setNewTodo] = useState("");
   const [activeFilter, setActivefilter] = useState("all");
 
+  const filteredTodos = todos.filter((todo) => {
+    if (activeFilter === "active") return !todo.isCompleted;
+    if (activeFilter === "completed") return todo.isCompleted;
+    return true;
+  });
+
   const addTodoHandler = () => {
+    if (!newTodo) {
+      alert("Please enter a task!");
+      return;
+    }
     setTodos([
       ...todos,
       {
@@ -20,11 +30,15 @@ export default function Home() {
 
     setNewTodo("");
   };
-  const deleteHandler = (id) => {
-    alert("Are you sure to delete?");
-    setTodos(todos.filter((todo) => todo.id !== id));
-  };
 
+  const deleteHandler = (id) => {
+    const deleteSure = window.confirm("Are you sure to delete?");
+    if (!deleteSure) return;
+
+    const sureDelete = setTodos(todos.filter((todo) => todo.id !== id));
+    return sureDelete;
+    // alert("Are you sure to delete?");
+  };
 
   const toggleIsCompleted = (id) => {
     let changedTodos = todos.map((todo) => {
@@ -37,8 +51,12 @@ export default function Home() {
   };
 
   const clearCompletedHandler = () => {
-    setTodos(todos.filter((todo) => !todo.isCompleted ));
-  }
+    const confirmClear = window.confirm(
+      "Are you sure want to clear all this shit?"
+    );
+    if (!confirmClear) return;
+    setTodos(todos.filter((todo) => !todo.isCompleted));
+  };
 
   // const toggleIsCompleted = (incomingTodo) => {
   //   let changedTodos = todos.map((t) => {
@@ -90,7 +108,7 @@ export default function Home() {
           </button>
         </div>
         <div>
-          {todos.map((todo, index) => {
+          {filteredTodos.map((todo, index) => {
             return (
               <div className={styles.checkBox} key={index}>
                 <input
@@ -99,11 +117,18 @@ export default function Home() {
                   checked={todo.isCompleted}
                 />
 
-                <p className={todo.isCompleted ? styles.completed : ""}>
+                <p
+                  className={todo.isCompleted ? styles.completed : styles.taskP}
+                >
                   {todo.task}
                 </p>
-                <button onClick={() => deleteHandler(todo.id)} className={styles.deleteBtn}>Delete</button>
 
+                <button
+                  onClick={() => deleteHandler(todo.id)}
+                  className={styles.deleteBtn}
+                >
+                  Delete
+                </button>
               </div>
             );
           })}
@@ -113,11 +138,18 @@ export default function Home() {
             <p className={styles.noTask}>No tasks yet. Add one above!</p>
           ) : (
             <div className={styles.taskSummary}>
-              <p>{todos.filter((todo) => todo.isCompleted).length} of {todos.length} tasks completed</p>
-              <p onClick={clearCompletedHandler} className={styles.clearCompletedBtn}>Clear completed</p>
+              <p>
+                {todos.filter((todo) => todo.isCompleted).length} of{" "}
+                {todos.length} tasks completed
+              </p>
+              <p
+                onClick={clearCompletedHandler}
+                className={styles.clearCompletedBtn}
+              >
+                Clear completed
+              </p>
             </div>
           )}
-
         </div>
         <p className={styles.copyright}>
           Powered by <span>Pinecone academy</span>
